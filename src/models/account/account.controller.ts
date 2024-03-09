@@ -2,6 +2,7 @@ import { Body, Controller, Param, Post, Put, UseGuards } from '@nestjs/common';
 import { AccountService } from './account.service';
 import { JwtAuthGuard } from 'src/authentication/guards/jwt.guard';
 import { CreateAccountDto } from './dto/create-account.dto';
+import { UpdateAccountDto } from './dto/update-account.dto';
 
 @Controller('accounts')
 @UseGuards(JwtAuthGuard)
@@ -14,7 +15,7 @@ export class AccountController {
   }
 
   @Put('/:id')
-  async update(@Param('id') id: string, @Body() body: CreateAccountDto) {
+  async update(@Param('id') id: string, @Body() body: UpdateAccountDto) {
     return await this.accountService.update(id, body);
   }
 }
