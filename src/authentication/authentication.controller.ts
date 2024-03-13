@@ -5,12 +5,14 @@ import { AuthenticationSignupDto } from './dto/authentication-signup.dto';
 import { JwtAuthGuard } from './guards/jwt.guard';
 import { LocalGuard } from './guards/local.guard';
 import { UserPreferencesService } from 'src/models/user-preferences/user-preferences.service';
+import { AccountService } from 'src/models/account/account.service';
 
 @Controller('auth')
 export class AuthenticationController {
   constructor(
     private authenticationService: AuthenticationService,
     private readonly userPreferencesService: UserPreferencesService,
+    private readonly accountService: AccountService,
   ) {}
 
   @Post('signin')

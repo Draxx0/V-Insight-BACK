@@ -12,12 +12,4 @@ export class AuthenticationSignupDto {
   @IsString()
   @IsNotEmpty()
   password: string;
-
-  @IsString()
-  @IsNotEmpty()
-  account_username: string;
-
-  @IsString()
-  @IsNotEmpty()
-  account_tag: string;
 }

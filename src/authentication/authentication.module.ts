@@ -9,6 +9,7 @@ import { PassportModule } from '@nestjs/passport';
 import { LocalStrategy } from './strategies/local.strategy';
 import { JwtStrategy } from './strategies/jwt.strategy';
 import { UserPreferencesModule } from 'src/models/user-preferences/user-preferences.module';
+import { AccountModule } from 'src/models/account/account.module';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { UserPreferencesModule } from 'src/models/user-preferences/user-preferen
     UserModule,
     PassportModule,
     UserPreferencesModule,
+    AccountModule,
     JwtModule.register({
       secret: process.env.JWT_SECRET,
       signOptions: { expiresIn: '1h' },

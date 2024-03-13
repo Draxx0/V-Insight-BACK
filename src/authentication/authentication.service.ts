@@ -16,8 +16,8 @@ export class AuthenticationService {
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>,
     // SERVICES
-    private usersService: UserService,
-    private jwtService: JwtService,
+    private readonly usersService: UserService,
+    private readonly jwtService: JwtService,
   ) {}
 
   async signin({
@@ -60,9 +60,8 @@ export class AuthenticationService {
       );
     }
 
-    console.log('body', body);
-
     const hashedPassword = await bcrypt.hash(body.password, 10);
+
     const newUser = {
       ...body,
       password: hashedPassword,
