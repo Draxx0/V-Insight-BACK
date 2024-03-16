@@ -24,9 +24,14 @@ export class AuthenticationService {
     email,
     password,
   }: AuthenticationSigninDto): Promise<TokenObject> {
+    console.log('email', email, 'password', password);
     const user = await this.usersService.findOneByEmail(email);
 
     console.log('user', user);
+
+    if (!user) {
+      throw new HttpException('User not found', HttpStatus.NOT_FOUND);
+    }
 
     const isPasswordMatching = await bcrypt.compare(password, user.password);
 
